@@ -1,0 +1,29 @@
+# least squares method
+import numpy as np
+import matplotlib.pyplot as plt
+xp=np.arange(1,60)
+yp=k*xp+b
+plt.scatter(x,y)
+plt.plot(xp,yp)
+x=np.array([2,6,23,40,52])
+y=np.array([13,21,36,44,50])
+n=5
+hasil=[]
+for i in range(len(x)):
+    hasil.append(x[i]*y[i])
+ortalama_hasil=np.mean(hasil)
+
+ortalama_x=np.mean(x)
+ortalama_y=np.mean(y)
+
+
+hasil_x=[]
+for i in range(len(x)):
+    hasil_x.append(x[i]*x[i])
+ortalama_hasil_x=np.mean(hasil_x)
+
+k=(n*ortalama_hasil-ortalama_x*ortalama_y)/(n*ortalama_hasil_x-ortalama_x**2)
+print(k)
+b=(ortalama_y-k*ortalama_x)/n    
+print(b)
+
