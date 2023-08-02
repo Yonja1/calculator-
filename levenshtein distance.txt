@@ -1,0 +1,42 @@
+
+#levenshtein distance
+
+A_names=["Qonce","Muhammed","Leyla","Ilaye","Cahid","Ilahe","Ramal","Elsen","Murad","Aysel","Ilkin","Fidan","Yonca","Vusal","Leman","Ibrahim","Zeyneb","Amil","Samir","Vuqar","Tahir","Nurlan","Lale","Sevinc","Xanim","Nurcan","Qardas","Lamiye"]
+String=input("Enter name")
+def levenshtein_distance(s1,s2):
+    dp=[[0 for i in range(len(s2)+1)] for j in range(len(s1)+1)]
+    for i in range(len(s1)+1):
+        dp[i][0]=i
+    for j in range(len(s2)+1):
+        dp[0][j]=j
+    for i in range(1,len(s1)+1):
+        for j in range(1,len(s2)+1):
+            if s1[i-1]==s2[j-1]:
+               dp[i][j]=dp[i-1][j-1]
+            else:
+               dp[i][j]=1+min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1])
+   
+    return dp[len(s1)][len(s2)]
+
+distances=[]
+for name in A_names:
+    distance= levenshtein_distance(name,String)
+    distances.append(distance)
+print(distances)  
+   
+min_distance_number=min(distances)
+min_distance_index=distances.index(min_distance_number)
+min_distance_name=A_names[min_distance_index]
+print(min_distance_name)
+print(min_distance_number)
+if min_distance_number<3:
+   print("Did you mean"+min_distance_name+"?")
+   choice=input()
+   if choice=="yes":
+      print(min_distance_name)
+   else:
+      A_names.append(String) 
+else:
+    print(A_names.append(String))      
+    print("Name was successfully added to list")
+      
