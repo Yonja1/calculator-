@@ -1,0 +1,17 @@
+# gradient
+import numpy as np
+
+def f(x,y):
+    return (1-x)**2+100*(y-x**2)**2 
+
+def df(x,y):
+    fx=2*(1-x)-4*x*100*(y-x*2)
+    fy=2*100*(y-x**2)
+    return np.array([fx,fy])
+a=0.1
+vector=np.array([0,1])
+for i in range(100):
+    
+    vector= vector-a * df(vector[0],vector[1])
+    print(f(vector[0],vector[1]))
+print(vector)
