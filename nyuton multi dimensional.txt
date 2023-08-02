@@ -1,0 +1,22 @@
+# Nyuton multidimensional
+
+import numpy as np
+
+def f(x,y):
+    return x**4+y**4+5*(x**2)*(y**2)
+def df(x,y):
+    fx=4*(x**3)+10*x*(y**2)
+    fy=4*(y**3)+10*y*(x**2)
+    return np.array([fx,fy])
+def ddf(x,y):
+    fxx=12*(x**2)+10*(y**2)
+    fyy=12*(y**2)+10*(x**2)
+    fxy=20*x*y
+    return np.array([[fxx,fxy],[fxy,fyy]])
+a=np.array([1,2])
+for i in range(10):
+   hessian=np.linalg.inv(ddf(a[0],a[1]))
+   grad=df(a[0],a[1])
+   a=a-np.matmul(hessian,grad)
+   print(f(a[0],a[1]))
+print(a)
