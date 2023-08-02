@@ -1,0 +1,24 @@
+# lagrange interpolation
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+def f(x):
+    return x**2+5*x+7
+x=[1,2,3,4,5]
+n=len(x)
+y=[]
+a=int(input("number to be interpolated:"))
+result=0
+for i in range(len(x)):
+    y.append(f(x[i]))
+    p=1
+    for j in range(len(x)):
+        if i!=j:
+           p=p*(a-x[j])/(x[i]-x[j])
+    p=p*y[i]
+    result=result+p
+print(result)
+plt.scatter(x,y)
+# plt.plot(xp,yp)
+plt.scatter(a,result)
+plt.show() 
