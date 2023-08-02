@@ -1,0 +1,38 @@
+# marquardt method
+
+import numpy as np
+import math
+
+def f(x,y):
+    return x-y+2*x**2+2*x*y+y**2
+def df(x,y):
+    fx=1+4*x+2*y
+    fy=-1+2*x+2*y
+    return np.array([fx,fy])
+def ddf(x,y):
+    fxx=4
+    fyy=2
+    fxy=2
+    return np.array([[fxx,fxy],[fxy,fyy]])
+def vector_length(vector):
+    length=math.sqrt(sum([i**2 for i in vector]))
+    return length
+x=np.array([3,3])
+delta=10**4
+c1=0.25
+c2=2
+eps=10**(-2)
+f_old=f(x[0],x[1])
+while vector_length (df(x[0],x[1]))>eps:
+    hessian=(ddf(x[0],x[1]))
+    p=np.linalg.inv(hessian+delta* np.eye(2))                 
+    xn=x-np.matmul(p,(df(x[0],x[1])))
+    f_new=f(xn[0],xn[1])
+    if (f_new>f_old):
+        delta=c2*delta
+    elif(f_old>=f_new):
+        delta=c1*delta
+        f_old=f_new
+        x=xn
+    print(f(x[0],x[1]))
+print(x)
