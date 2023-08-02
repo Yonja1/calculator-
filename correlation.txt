@@ -1,0 +1,47 @@
+#correlation
+import math
+
+x=[1,2,3,4,5]
+y=[5,4,3,2,1]
+hasil=[]
+for i in range(len(x)):
+    hasil.append(x[i]*y[i])
+cem_hasil=sum(hasil)
+say_hasil=len(hasil) 
+ortalama1=(sum(hasil) /len(hasil))
+cem_x=sum(x) 
+say_x=len(x)
+ortalama_x=cem_x/say_x
+cem_y=sum(y)
+say_y=len(y)
+ortalama_y=sum(y)/len(y)
+ortalama_x_y=ortalama_x*ortalama_y
+covariance=ortalama1-ortalama_x_y
+print(covariance)
+hasil_x=[]
+for i in range(len(x)):
+    hasil_x.append(x[i]**2)
+cem_hasil_x=sum(hasil_x)
+say_hasil_x=len(hasil_x)
+ortalama_hasil_x=sum(hasil_x)/len(hasil_x)
+cem_x=sum(x) 
+say_x=len(x)
+ortalama_x=cem_x/say_x
+ortalama_x2=ortalama_x**2
+st_vr1=(ortalama_hasil_x-ortalama_x2)
+st_dv1=math.sqrt(st_vr1)
+hasil_y=[]
+for i in range(len(y)):
+    hasil_y.append(y[i]**2)
+cem_hasil_y=sum(hasil_y)
+say_hasil_y=len(hasil_y)
+ortalama_hasil_y=sum(hasil_y)/len(hasil_y)
+cem_y=sum(y) 
+say_y=len(y)
+ortalama_y=cem_y/say_y
+ortalama_y2=ortalama_y**2
+st_vr2=(ortalama_hasil_y-ortalama_y2)
+st_dv2=math.sqrt(st_vr2)
+mexrec=st_dv1*st_dv2 
+correlation=covariance/mexrec
+print(correlation)
