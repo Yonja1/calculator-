@@ -1,0 +1,23 @@
+    #standart deviation
+    ballar=[88,71,100,83,92,91]
+    kreditler=[4,5,5,4,6,6]
+    hasil=[]
+    for i in range(len(ballar)):
+        hasil.append(ballar[i]*kreditler[i])
+    cem_suret=sum(hasil)    
+    cem_mexrec=sum(kreditler)  
+    ortalama=cem_suret/cem_mexrec
+    print("ortalama:",ortalama)
+    
+    hasil1=[]
+    for i in range(len(ballar)):
+        hasil1.append(ballar[i]*ballar[i])
+    cem_suret1=sum(hasil1)
+    say_hasil1=len(hasil1)
+    ortalama1=sum(hasil1)/len(hasil1)
+        
+    hasil2=ortalama*ortalama
+     
+    umumi_qiymet=ortalama1+hasil2
+    print(umumi_qiymet)
+    
