@@ -1,0 +1,16 @@
+# gauss method
+
+a=[[4,2,6],[3,4,5],[1,3,1]]
+
+for x in range((len(a))):
+    pivot=a[x][x]
+    for y in range((len(a))): 
+    
+        a[x][y]=a[x][y]/pivot
+        
+      
+    for y in range(x+1,len(a)):
+        pp=a[y][x]
+        for z in range(len(a)):
+            a[y][z]=a[y][z]-(a[x][z])*pp
+print(a)
