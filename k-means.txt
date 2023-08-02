@@ -1,0 +1,26 @@
+#k-means
+import numpy as np
+a=np.array([1,2,-3,4,5,-6,7,8,-9,-12])
+b=np.array([-1,-2,3,-4,-5,6,-7,-8,9,-13])
+A=np.array([[5],[4]])
+B=np.array([[-6],[8]])
+k=5
+for iteration in range(k):
+    c=[] 
+    d=[]  
+    for i in range(len(a)):
+         x1=np.sqrt((a[i]-A[0][0])**2+(b[i]-A[1][0])**2)
+         x2=np.sqrt((a[i]-B[0][0])**2+(b[i]-B[1][0])**2)
+         if x1<x2:
+            c.append((a[i],b[i]))
+         else :
+            d.append((a[i],b[i]))
+
+    c=np.array(c)
+    column_means_c = np.mean(c, axis=0)
+    d=np.array(d)
+    column_means_d = np.mean(d, axis=0)
+    A[0][0] = column_means_c[0]
+    A[1][0] = column_means_c[1]
+    B[0][0] = column_means_d[0]
+    B[1][0] = column_means_d[1]
