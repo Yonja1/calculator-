@@ -1,0 +1,23 @@
+# Nyuton one dimensional
+
+import numpy as np
+
+def f(x):
+    return x**3+x**2
+def df(x):
+    fx=3*x**2+2*x
+    return np.array([fx])
+
+def ddf(x):
+    dfx=6*x+2
+    return np.array([dfx])
+a=np.array([1])
+eps=0.0001
+while True:
+    fold=f(a)
+    a=a-df(a[0])/ddf(a[0])
+    fnew=f(a)
+    if abs(fold-fnew)<eps:
+      break
+    fold=fnew
+    print(fold)
