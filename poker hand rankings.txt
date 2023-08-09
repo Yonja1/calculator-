@@ -1,0 +1,41 @@
+#poker hand rankings
+           
+    import numpy as np
+    ranks=np.array([2,3,4,5,6,7,8,9,10,11,12,13,14])
+    suits=np.array(["Spades","Clubs","Hearts","Diamonds"])
+    hand_ranks=[]
+    hand_suits=[]
+    for i in range(5):
+        rank=int(input("Enter ranks: "))
+        suit_str=input("Enter suits: ")
+        hand_ranks.append(rank)
+        hand_suits.append(suit_str)        
+    def flush():
+        return all(suit_str == hand_suits[0] for suit_str in hand_suits) 
+    def straight():
+        sorted_ranks=sorted(hand_ranks)
+        return all(sorted_ranks[i]==sorted_ranks[i-1]+1 for i in range(1,len(sorted_ranks)))
+    def straight_flush():
+        return flush() and straight()
+    if straight_flush() and hand_ranks[-1]==14:
+        print("Royal Flush")
+    elif straiht_flush():
+        print("Straight Flush")
+    elif flush():
+         print("Flush") 
+    elif straight():
+         print("Straight")   
+    elif any(hand_ranks.count(rank)==4 for rank in ranks):
+        print("Four of Kind")
+    elif len(set(hand_ranks))==2:
+         counts=[hand_ranks.count(rank) for rank in set(hand_ranks)]
+         if counts==[2,3] or counts==[3,2]:
+             print("Full House")
+    elif any(hand_ranks.count(rank)==3 for rank in ranks):
+        print("Three of Kind")
+    elif sorted([hand_ranks.count(rank) for rank in ranks if hand_ranks.count(rank)==2])==[2,2]:
+        print("Two Pair")
+    elif any(hand_ranks.count(rank)==2 for rank in ranks):
+        print("Pair")
+    else:
+        print("High Card")
